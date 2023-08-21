@@ -31,7 +31,7 @@ cd HomeAutomation
 qmake HomeAutomation.pro
 
 
-## N.B.: Note: Assuming that the required prerequisites are installed and Qt is properly set up, the qmake utility will be automatically executed by Qt. All, you simply need to navigate to the "File" menu within Qt Creator and proceed to open the .pro file associated with your project.
+N.B.: Note: Assuming that the required prerequisites are installed and Qt is properly set up, the qmake utility will be automatically executed by Qt. All, you simply need to navigate to the "File" menu within Qt Creator and proceed to open the .pro file associated with your project.
 
 https://github.com/segestic/HomeAutomation/assets/50618702/21c983ba-d038-4b23-ae4c-caf57dcba39d
 
