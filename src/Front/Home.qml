@@ -27,7 +27,7 @@ Rectangle {
             verticalCenter: parent.verticalCenter
         }
         source: 'qrc:/src/images/bg_glass.png' //background_music //background2
-        //fillMode: Image.Stretch
+
         Timer {
             id: timer
             property var currentDate: new Date()
@@ -167,50 +167,16 @@ Rectangle {
                 leftMargin: parent.width * 0.01
             }
         }
+        Timer{
+            id: simulator
+            running: false
+            repeat: true
+            interval: 150 //console.log('simulator is triggered');
+            onTriggered: { }
+        }
     }
-
-//    states: [
-//        State {
-//            name: "zoomedIn"
-//            PropertyChanges {
-//                target: weather_container
-//                scale: 1.5
-//            }
-//        },
-//        State {
-//            name: "default"
-//            PropertyChanges {
-//                target: weather_container
-//                scale: 1
-//            }
-//        }
-//    ]
-
-//    transitions: [
-//        Transition {
-//            from: "default"
-//            to: "zoomedIn"
-//            PropertyAnimation {
-//                target: weather_container
-//                property: "scale"
-//                duration: 200
-//            }
-//        },
-//        Transition {
-//            from: "zoomedIn"
-//            to: "default"
-//            PropertyAnimation {
-//                target: weather_container
-//                property: "scale"
-//                duration: 200
-//            }
-//        }
-//    ]
-
+    //Component.onCompleted: {simulator.start()}
 }
 
 
-//APIs gotten frm
-//https://doc.qt.io/qt-6/qml-qt5compat-graphicaleffects-rectangularglow.html
-//degreeC - qsTr("\u2103")
-//degree - qsTr("\xB0 ")
+

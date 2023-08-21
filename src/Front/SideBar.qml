@@ -4,6 +4,8 @@ import Qt5Compat.GraphicalEffects
 Item {
     Image {
         id: home_icon
+        property string iconSelected: "home_icon"
+
         source: "qrc:/src/images/home_icon.png"
         anchors{
             top: parent.top
@@ -14,16 +16,17 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                home_icon.iconSelected = "home_icon"
                 pageLoader.source = "qrc:/src/Front/Home.qml"
                 console.log("home icon clicked" )
-                //home1.changeImage()
+                home1.changeImage()
                 effect1.state = "home_clicked";
             }
         }
     }
     Image{
         id: effect1
-        //visible: false
+        visible: false
         source: "qrc:/src/images/active_m.png"
         z:40
         width: 80//parent.width * 0.85
@@ -50,9 +53,9 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                effect1.state = "door_clicked";
-                if (effect1.state === "door_clicked"){
-                    pageLoader.source = "qrc:/src/Front/Door.qml"}
+                home_icon.iconSelected = "door_icon"
+                //effect1.state = "door_clicked";
+                pageLoader.source = "qrc:/src/Front/Door.qml"
                 console.log("door icon clicked")
             }
         }
@@ -70,15 +73,12 @@ Item {
         MouseArea {
             anchors.fill: music_icon
             onClicked: {
-                //home_icon.move = music_icon.y - 20
-                effect1.state = "music_clicked";
-                if (effect1.state === "music_clicked"){
-                    pageLoader.source = "qrc:/src/Front/Music.qml"}
+                home_icon.iconSelected = "music_icon"
+                pageLoader.source = "qrc:/src/Front/Music.qml"
                 console.log("Music icon clicked")
 
             }
             onEntered: {
-                //effect1.state = "home_clicked";
                 console.log('music icon hovered');
             }
         }
@@ -87,6 +87,7 @@ Item {
         // State: highlighted
         State {
             name: "home_clicked"
+            when: home_icon.iconSelected === "home_icon"
             // Set properties for the highlighted state
             PropertyChanges {
                 target: effect1
@@ -96,6 +97,7 @@ Item {
         },
         State {
             name: "door_clicked"
+            when: home_icon.iconSelected === "door_icon"
 
             // Set properties for the highlighted state
             PropertyChanges {
@@ -106,6 +108,7 @@ Item {
         },
         State {
             name: "music_clicked"
+            when: home_icon.iconSelected === "music_icon"
 
             // Set properties for the highlighted state
             PropertyChanges {
@@ -121,13 +124,9 @@ Item {
             from: "*"
             to: "*"
             NumberAnimation {
-                duration: 400 // Animation duration in milliseconds
+                duration: 200 // Animation duration in milliseconds
             }
         }
     ]
 
 }
-
-
-//APIs gotten frm
-//https://doc.qt.io/qt-6/qml-qt5compat-graphicaleffects-rectangularglow.html

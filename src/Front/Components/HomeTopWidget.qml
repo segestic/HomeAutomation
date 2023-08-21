@@ -6,6 +6,7 @@ import Qt5Compat.GraphicalEffects
 Rectangle{
     id: weather_container
     property int currentTemp: 27
+    opacity: 0.8
 
     width: home.width * 0.5
     height: home.height * 0.2

@@ -171,6 +171,16 @@ Rectangle {
                     centerIn: parent
                 }
             }
+            MouseArea {
+                width: parent.width
+                height: parent.height
+                onClicked: {
+                    continuous_slider.running ? continuous_slider.stop() : continuous_slider.start();
+
+                    //console.log('right slider clicked...')
+                    //slider_button.anchors.leftMargin = (slider_button.anchors.leftMargin === 25) ? 115 : 25
+                }
+            }
         }
         Image{
             id: previous
@@ -181,6 +191,14 @@ Rectangle {
                 horizontalCenter: parent.horizontalCenter
                 horizontalCenterOffset: -100
             }
+        }
+        Timer{
+            id: continuous_slider
+            interval: 200
+            running: false
+            repeat: true
+            onTriggered: {incrementSlider()}
+
         }
         Image{
             id: next
@@ -204,7 +222,6 @@ Rectangle {
         }
     }
 }
-
 
 
 
